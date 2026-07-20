@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# vscode editor config
+.vscode/
+
+# AI-assistant scaffolding files, generic Astro template README
+AGENTS.md
+CLAUDE.md
+README.md
