@@ -1,0 +1,28 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ActionBar from '../components/ActionBar.astro';
+
+interface Props {
+  categoryName: string;
+  itemCount: number;
+}
+const { categoryName, itemCount } = Astro.props;
+---
+
+<BaseLayout title={categoryName}>
+  <ActionBar>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <h1 class="breadcrumb__current">{categoryName}</h1>
+      <span class="breadcrumb__sep">·</span>
+      <span>{itemCount} article{itemCount === 1 ? '' : 's'}</span>
+    </nav>
+  </ActionBar>
+
+  <div class="kb-page">
+    <div class="container category-articles">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

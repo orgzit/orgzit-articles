@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import HomeLayout from '../layouts/HomeLayout.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+
+const articles = await getCollection('articles');
+
+const categoryCounts = new Map<string, number>();
+for (const article of articles) {
+  categoryCounts.set(article.data.category, (categoryCounts.get(article.data.category) ?? 0) + 1);
+}
+const categories = [...categoryCounts.entries()]
+  .map(([name, count]) => ({ name, count }))
+  .sort((a, b) => b.count - a.count);
+
+// No real ratings/analytics on a static site — this pulls from articles you
+// manually flag `featured: true` in frontmatter, falling back to a handful
+// so the section isn't empty until you curate one.
+const featured = articles.filter((a) => a.data.featured);
+const recommended = (featured.length > 0 ? featured : articles).slice(0, 6);
+---
+
+<HomeLayout>
+  <section class="section section--first">
+    <h2 class="recommended-heading">Recommended articles</h2>
+    <div class="simple-list">
+      {recommended.map((a) => (
+        <a href={`/articles/${a.data.slug}`} class="simple-list__item">{a.data.title}</a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section category-band">
+    <div class="container">
+      <div class="card-grid">
+        {categories.map((c) => (
+          <CategoryCard name={c.name} />
+        ))}
+      </div>
+    </div>
+  </section>
+</HomeLayout>

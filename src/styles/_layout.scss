@@ -1,0 +1,410 @@
+// ── KB action band (search) ────────────────────────────────────────────────────
+
+.action-band {
+  background: var(--color-action-band);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 0 1.75rem;
+}
+
+.action-band__inner {
+  display: flex;
+}
+
+.action-band__search {
+  flex: 1 1 24rem;
+  max-width: 34rem;
+}
+
+// ── Site shell ────────────────────────────────────────────────────────────────
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 3.75rem;
+  padding: 0;
+
+  @media (max-width: 30rem) {
+    gap: 0.5rem;
+  }
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5625rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text);
+  flex-shrink: 0;
+
+  .site-brand__logo {
+    height: 2rem;
+    width: auto;
+    display: block;
+  }
+
+  .site-brand__sep {
+    width: 1px;
+    height: 1.375rem;
+    background: var(--color-border-strong);
+  }
+
+  .site-brand__label {
+    font-size: 1.1875rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  // Below this width the logo + wordmark + nav + CTA no longer all fit on one
+  // line — drop the secondary "Knowledge Base" label first, it's the least
+  // essential piece, before anything has to wrap or overflow the viewport.
+  @media (max-width: 30rem) {
+    gap: 0.375rem;
+
+    .site-brand__sep,
+    .site-brand__label {
+      display: none;
+    }
+  }
+}
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.nav-divider {
+  width: 1px;
+  height: 1.125rem;
+  background: var(--color-border);
+  margin: 0 0.625rem;
+
+  @media (max-width: 30rem) {
+    margin: 0 0.25rem;
+  }
+}
+
+.nav-link {
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-sm);
+  color: #000000;
+  transition: color 0.15s ease, background 0.15s ease;
+  &:hover {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 30rem) {
+    padding: 0.5rem 0.4375rem;
+  }
+}
+
+.nav-cta {
+  padding: 0.4375rem 1.125rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: #f9f9f9 !important;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  &:hover { background: var(--color-primary-hover); }
+
+  @media (max-width: 30rem) {
+    padding: 0.4375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: #1f1f1f;
+  padding: 1.125rem 0;
+  font-size: 0.8125rem;
+  color: #ffffff;
+
+  // The flex layout belongs on .container (the footer's actual row of
+  // content) — .site-footer itself only ever wraps that one child.
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.site-footer__links {
+  display: flex;
+  gap: 1.25rem;
+  a:hover { color: var(--color-text-muted); }
+}
+
+// ── ArticleLayout ─────────────────────────────────────────────────────────────
+
+.kb-page {
+  background: var(--color-page-bg);
+  min-height: calc(100vh - 3.75rem);
+}
+
+.article-page {
+  padding: 2rem 0 4rem;
+}
+
+.article-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2rem 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+
+  a {
+    color: var(--color-primary);
+    font-weight: 500;
+    &:hover { text-decoration: underline; }
+  }
+
+  .breadcrumb__sep {
+    color: var(--color-text-faint);
+  }
+
+  .breadcrumb__current {
+    margin: 0;
+    font: inherit;
+    color: var(--color-text-faint);
+  }
+}
+
+.article-grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+
+  // Grid items default to min-width: auto, so a wide image's intrinsic size
+  // can blow out the 1fr track past the grid's own width. min-width: 0 lets
+  // the track (and the image's max-width: 100%) actually shrink to fit.
+  > article {
+    min-width: 0;
+  }
+
+  @media (min-width: 64rem) {
+    grid-template-columns: 1fr 15rem;
+    align-items: start;
+  }
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-category-badge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  background: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-pill);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.article-title {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+
+.article-byline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.article-byline__avatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.article-byline__author {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.article-byline__sep {
+  color: var(--color-text-faint);
+}
+
+.article-summary {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin: 0 0 2rem;
+  line-height: 1.65;
+  padding: 1rem 1.25rem;
+  background: var(--color-callout-bg);
+  border-left: 4px solid var(--color-callout-border);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.article-feedback {
+  margin-top: 2.5rem;
+  padding: 1.125rem 1.5rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+
+  .feedback-actions { display: flex; gap: 0.5rem; }
+
+  button {
+    padding: 0.4375rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+
+    &.feedback-btn--yes {
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      border-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
+    }
+  }
+}
+
+// ── Section titles ────────────────────────────────────────────────────────────
+
+.section {
+  margin-top: 3rem;
+}
+
+.category-band {
+  background: #f7f1ea;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  // Bottom padding absorbs what used to be .page--home's trailing gap, so the
+  // band's color runs straight to the footer instead of handing off to the
+  // default page background first.
+  padding: 3rem 0;
+}
+
+.section--first {
+  margin-top: 2.5rem;
+}
+
+.section__title {
+  margin: 0 0 1rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-faint);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+
+  span {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--color-border-strong);
+  }
+}
+
+// ── Category page ─────────────────────────────────────────────────────────────
+
+.category-articles {
+  padding: 2.25rem 0 4rem;
+}
+
+.category-articles__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.category-filter {
+  position: relative;
+
+  input {
+    padding: 0.5rem 0.75rem 0.5rem 2.125rem;
+    font-size: 0.8125rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    width: 13rem;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    &:focus { outline: none; border-color: var(--color-primary); }
+  }
+
+  svg {
+    position: absolute;
+    left: 0.625rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-faint);
+    pointer-events: none;
+  }
+}
+
+// ── Search page ───────────────────────────────────────────────────────────────
+
+.search-page {
+  padding: 2.25rem 0 4rem;
+}
+
+.search-page__heading {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  margin: 0 0 1.75rem;
+}

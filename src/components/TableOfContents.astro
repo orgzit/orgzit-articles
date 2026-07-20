@@ -1,0 +1,28 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+interface Props {
+  headings: Heading[];
+}
+const { headings } = Astro.props;
+const items = headings.filter((h) => h.depth <= 3);
+const minDepth = items.length > 0 ? Math.min(...items.map((i) => i.depth)) : 0;
+---
+
+{items.length > 0 && (
+  <div class="toc__card">
+    <p class="toc__title">On this page</p>
+    <nav aria-label="Table of contents" data-pagefind-ignore>
+      <ul class="toc__list">
+        {items.map((h) => (
+          <li style={{ paddingLeft: `${(h.depth - minDepth) * 0.75}rem` }}>
+            <a href={`#${h.slug}`} class="toc__link">{h.text}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+)}

@@ -1,0 +1,8 @@
+---
+import Search from 'astro-pagefind/components/Search.astro';
+interface Props { className?: string; placeholder?: string; }
+const { className = '', placeholder = 'Search support articles…' } = Astro.props;
+---
+<div class={`search-box ${className}`}>
+  <Search searchboxOptions={{ placeholder }} />
+</div>

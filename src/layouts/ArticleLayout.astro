@@ -1,0 +1,91 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ActionBar from '../components/ActionBar.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import MoreInCategory from '../components/MoreInCategory.astro';
+import SupportCard from '../components/SupportCard.astro';
+import { categorySlug } from '../lib/categories';
+
+interface Heading { depth: number; slug: string; text: string; }
+interface RelatedArticle { data: { title: string; slug: string; summary: string; category: string }; }
+interface Props {
+  title: string;
+  summary: string;
+  category: string;
+  author: string;
+  authorAvatar: string;
+  date: string;
+  headings: Heading[];
+  related: RelatedArticle[];
+}
+const { title, summary, category, author, authorAvatar, date, headings, related } = Astro.props;
+
+const formattedDate = new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={summary}>
+  <ActionBar>
+    <nav aria-label="Breadcrumb" data-pagefind-ignore class="breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <a href={`/category/${categorySlug(category)}`}>{category}</a>
+      <span class="breadcrumb__sep">/</span>
+      <span>{title}</span>
+    </nav>
+  </ActionBar>
+
+  <div class="kb-page">
+    <div class="container article-page">
+      <div class="article-grid">
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="article-category-badge">{category}</span>
+          </div>
+          <h1 class="article-title">{title}</h1>
+          {author && (
+            <div class="article-byline">
+              {authorAvatar && <img src={authorAvatar} alt="" width="28" height="28" class="article-byline__avatar" />}
+              <span class="article-byline__author">{author}</span>
+              <span class="article-byline__sep">·</span>
+              <time class="article-byline__date" datetime={date}>{formattedDate}</time>
+            </div>
+          )}
+          {summary && <p class="article-summary">{summary}</p>}
+          <div class="article-body">
+            <slot />
+          </div>
+          <div class="article-feedback" data-pagefind-ignore>
+            <span>Was this article helpful?</span>
+            <div class="feedback-actions">
+              <button class="feedback-btn--yes" type="button">Yes, thanks!</button>
+              <button type="button">Not really</button>
+            </div>
+          </div>
+        </article>
+
+        <aside class="toc">
+          <TableOfContents headings={headings} />
+          <MoreInCategory category={category} articles={related} />
+          <SupportCard />
+        </aside>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.article-feedback').forEach((bar) => {
+    const label = bar.querySelector('span');
+    const buttons = bar.querySelectorAll<HTMLButtonElement>('button');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (label) label.textContent = 'Thanks for the feedback!';
+        buttons.forEach((b) => (b.disabled = true));
+      });
+    });
+  });
+</script>

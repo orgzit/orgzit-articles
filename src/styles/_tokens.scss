@@ -1,0 +1,37 @@
+:root {
+  --color-bg: #fafafa;
+  --color-bg-subtle: #f1f5f9;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f5f7fa;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-faint: #94a3b8;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-primary: #178be7;
+  --color-primary-hover: color-mix(in srgb, #178be7 85%, black);
+  --color-primary-soft: color-mix(in srgb, #178be7 12%, white);
+
+  // Hero banner background — a deliberate dark statement color, independent
+  // of --color-primary (which drives links/buttons/hover accents).
+  --color-hero-bg: #1c2f3a;
+
+  // KB-style page chrome (article/category pages): action band, page backdrop, callout box
+  --color-page-bg: #f3f5f7;
+  --color-action-band: #fdf4ef;
+  --color-callout-bg: #fff8dc;
+  --color-callout-border: #ffd700;
+
+  --radius-md: 0.625rem;
+  --radius-sm: 0.5rem;
+  --radius-pill: 9999px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-md: 0 2px 8px 0 rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 8px 24px -4px rgb(0 0 0 / 0.10);
+
+  --container-max: 74rem;
+
+  --font-sans:
+    'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Helvetica, Arial, sans-serif;
+}

@@ -1,0 +1,642 @@
+[
+  {
+    "intercom_id": "7888179",
+    "intercom_url": "http://support.orgzit.com/en/articles/7888179-how-to-enable-multi-factor-authentication-mfa-in-orgzit",
+    "new_path": "/articles/how-to-enable-multi-factor-authentication-mfa-in-orgzit"
+  },
+  {
+    "intercom_id": "3042993",
+    "intercom_url": "http://support.orgzit.com/en/articles/3042993-tips-how-to-scroll-through-your-data-fast",
+    "new_path": "/articles/tips-how-to-scroll-through-your-data-fast"
+  },
+  {
+    "intercom_id": "2714214",
+    "intercom_url": "http://support.orgzit.com/en/articles/2714214-expense-docket-process",
+    "new_path": "/articles/expense-docket-process"
+  },
+  {
+    "intercom_id": "3042862",
+    "intercom_url": "http://support.orgzit.com/en/articles/3042862-how-to-change-the-layout-of-the-dashboard-on-orgzit",
+    "new_path": "/articles/how-to-change-the-layout-of-the-dashboard-on-orgzit"
+  },
+  {
+    "intercom_id": "3042950",
+    "intercom_url": "http://support.orgzit.com/en/articles/3042950-how-to-use-multiple-dashboards",
+    "new_path": "/articles/how-to-use-multiple-dashboards"
+  },
+  {
+    "intercom_id": "2651161",
+    "intercom_url": "http://support.orgzit.com/en/articles/2651161-how-to-add-a-dealer",
+    "new_path": "/articles/how-to-add-a-dealer"
+  },
+  {
+    "intercom_id": "2681661",
+    "intercom_url": "http://support.orgzit.com/en/articles/2681661-lead-management-user-guide",
+    "new_path": "/articles/lead-management-user-guide"
+  },
+  {
+    "intercom_id": "2699266",
+    "intercom_url": "http://support.orgzit.com/en/articles/2699266-invoicing-and-order-management-user-guide",
+    "new_path": "/articles/invoicing-and-order-management-user-guide"
+  },
+  {
+    "intercom_id": "2639261",
+    "intercom_url": "http://support.orgzit.com/en/articles/2639261-kanban-view-in-orgzit",
+    "new_path": "/articles/kanban-view-in-orgzit"
+  },
+  {
+    "intercom_id": "2639277",
+    "intercom_url": "http://support.orgzit.com/en/articles/2639277-map-view-in-orgzit",
+    "new_path": "/articles/map-view-in-orgzit"
+  },
+  {
+    "intercom_id": "2639648",
+    "intercom_url": "http://support.orgzit.com/en/articles/2639648-how-does-orgzit-app-email-inmail-work",
+    "new_path": "/articles/how-does-orgzit-app-email-inmail-work"
+  },
+  {
+    "intercom_id": "2646505",
+    "intercom_url": "http://support.orgzit.com/en/articles/2646505-how-to-set-up-a-workflow-to-generate-professional-pdfs-by-changing-the-status",
+    "new_path": "/articles/how-to-set-up-a-workflow-to-generate-professional-pdfs-by-changing-the-status"
+  },
+  {
+    "intercom_id": "2633650",
+    "intercom_url": "http://support.orgzit.com/en/articles/2633650-lead-management-the-orgzit-way",
+    "new_path": "/articles/lead-management-the-orgzit-way"
+  },
+  {
+    "intercom_id": "2639100",
+    "intercom_url": "http://support.orgzit.com/en/articles/2639100-tabular-view-in-orgzit",
+    "new_path": "/articles/tabular-view-in-orgzit"
+  },
+  {
+    "intercom_id": "2639185",
+    "intercom_url": "http://support.orgzit.com/en/articles/2639185-how-to-create-professional-pdfs-in-orgzit",
+    "new_path": "/articles/how-to-create-professional-pdfs-in-orgzit"
+  },
+  {
+    "intercom_id": "2633376",
+    "intercom_url": "http://support.orgzit.com/en/articles/2633376-how-to-show-hide-fields",
+    "new_path": "/articles/how-to-show-hide-fields"
+  },
+  {
+    "intercom_id": "2633576",
+    "intercom_url": "http://support.orgzit.com/en/articles/2633576-what-about-data-protection",
+    "new_path": "/articles/what-about-data-protection"
+  },
+  {
+    "intercom_id": "2633590",
+    "intercom_url": "http://support.orgzit.com/en/articles/2633590-which-browser-is-best-for-orgzit",
+    "new_path": "/articles/which-browser-is-best-for-orgzit"
+  },
+  {
+    "intercom_id": "2633595",
+    "intercom_url": "http://support.orgzit.com/en/articles/2633595-does-the-system-work-offline",
+    "new_path": "/articles/does-the-system-work-offline"
+  },
+  {
+    "intercom_id": "2633209",
+    "intercom_url": "http://support.orgzit.com/en/articles/2633209-how-to-upgrade-the-pricing-plan-after-the-trial-period-or-from-super-teams-to-premium",
+    "new_path": "/articles/how-to-upgrade-the-pricing-plan-after-the-trial-period-or-from-super-teams-to-premium"
+  },
+  {
+    "intercom_id": "2633230",
+    "intercom_url": "http://support.orgzit.com/en/articles/2633230-how-to-add-my-team-to-the-workspace-and-how-to-remove-disable-members-from-the-workspace",
+    "new_path": "/articles/how-to-add-my-team-to-the-workspace-and-how-to-remove-disable-members-from-the-workspace"
+  },
+  {
+    "intercom_id": "2633281",
+    "intercom_url": "http://support.orgzit.com/en/articles/2633281-how-to-search-in-orgzit",
+    "new_path": "/articles/how-to-search-in-orgzit"
+  },
+  {
+    "intercom_id": "2630836",
+    "intercom_url": "http://support.orgzit.com/en/articles/2630836-can-i-sign-in-up-multiple-accounts-using-the-same-email-id",
+    "new_path": "/articles/can-i-sign-in-up-multiple-accounts-using-the-same-email-id"
+  },
+  {
+    "intercom_id": "2630981",
+    "intercom_url": "http://support.orgzit.com/en/articles/2630981-how-to-create-a-new-record",
+    "new_path": "/articles/how-to-create-a-new-record"
+  },
+  {
+    "intercom_id": "2631005",
+    "intercom_url": "http://support.orgzit.com/en/articles/2631005-how-to-edit-delete-a-record",
+    "new_path": "/articles/how-to-edit-delete-a-record"
+  },
+  {
+    "intercom_id": "2630602",
+    "intercom_url": "http://support.orgzit.com/en/articles/2630602-how-to-sign-up-for-a-new-account",
+    "new_path": "/articles/how-to-sign-up-for-a-new-account"
+  },
+  {
+    "intercom_id": "2630824",
+    "intercom_url": "http://support.orgzit.com/en/articles/2630824-how-to-login-in-your-account",
+    "new_path": "/articles/how-to-login-in-your-account"
+  },
+  {
+    "intercom_id": "2707337",
+    "intercom_url": "http://support.orgzit.com/en/articles/2707337-project-profit-loss-and-expense-management-user-guide",
+    "new_path": "/articles/project-profit-loss-and-expense-management-user-guide"
+  },
+  {
+    "intercom_id": "2703498",
+    "intercom_url": "http://support.orgzit.com/en/articles/2703498-customer-service-helpdesk-user-guide",
+    "new_path": "/articles/customer-service-helpdesk-user-guide"
+  },
+  {
+    "intercom_id": "4465098",
+    "intercom_url": "http://support.orgzit.com/en/articles/4465098-api-integration",
+    "new_path": "/articles/api-integration"
+  },
+  {
+    "intercom_id": "4306625",
+    "intercom_url": "http://support.orgzit.com/en/articles/4306625-how-to-attach-documents-to-automated-emails",
+    "new_path": "/articles/how-to-attach-documents-to-automated-emails"
+  },
+  {
+    "intercom_id": "4459901",
+    "intercom_url": "http://support.orgzit.com/en/articles/4459901-api-integration-how-to-fetch-records",
+    "new_path": "/articles/api-integration-how-to-fetch-records"
+  },
+  {
+    "intercom_id": "4470177",
+    "intercom_url": "http://support.orgzit.com/en/articles/4470177-api-integration-how-to-create-records",
+    "new_path": "/articles/api-integration-how-to-create-records"
+  },
+  {
+    "intercom_id": "4473682",
+    "intercom_url": "http://support.orgzit.com/en/articles/4473682-api-integration-how-to-update-records",
+    "new_path": "/articles/api-integration-how-to-update-records"
+  },
+  {
+    "intercom_id": "4380637",
+    "intercom_url": "http://support.orgzit.com/en/articles/4380637-how-to-set-up-a-new-table",
+    "new_path": "/articles/how-to-set-up-a-new-table"
+  },
+  {
+    "intercom_id": "4423247",
+    "intercom_url": "http://support.orgzit.com/en/articles/4423247-how-to-understand-which-plan-suits-your-business",
+    "new_path": "/articles/how-to-understand-which-plan-suits-your-business"
+  },
+  {
+    "intercom_id": "4358502",
+    "intercom_url": "http://support.orgzit.com/en/articles/4358502-how-to-remove-users-from-your-orgzit-account-or-orgzit-workspace",
+    "new_path": "/articles/how-to-remove-users-from-your-orgzit-account-or-orgzit-workspace"
+  },
+  {
+    "intercom_id": "4386802",
+    "intercom_url": "http://support.orgzit.com/en/articles/4386802-how-does-the-lock-unlock-button-for-dashboard-widgets-work",
+    "new_path": "/articles/how-does-the-lock-unlock-button-for-dashboard-widgets-work"
+  },
+  {
+    "intercom_id": "4386753",
+    "intercom_url": "http://support.orgzit.com/en/articles/4386753-how-to-manage-account-widgets-for-all-users",
+    "new_path": "/articles/how-to-manage-account-widgets-for-all-users"
+  },
+  {
+    "intercom_id": "4386732",
+    "intercom_url": "http://support.orgzit.com/en/articles/4386732-how-to-set-up-role-based-workspace-level-access-permissions",
+    "new_path": "/articles/how-to-set-up-role-based-workspace-level-access-permissions"
+  },
+  {
+    "intercom_id": "4384218",
+    "intercom_url": "http://support.orgzit.com/en/articles/4384218-how-to-use-filter-subscriptions",
+    "new_path": "/articles/how-to-use-filter-subscriptions"
+  },
+  {
+    "intercom_id": "4380459",
+    "intercom_url": "http://support.orgzit.com/en/articles/4380459-how-to-add-a-new-widget",
+    "new_path": "/articles/how-to-add-a-new-widget"
+  },
+  {
+    "intercom_id": "4373696",
+    "intercom_url": "http://support.orgzit.com/en/articles/4373696-what-are-the-different-report-buttons-used-for",
+    "new_path": "/articles/what-are-the-different-report-buttons-used-for"
+  },
+  {
+    "intercom_id": "4367374",
+    "intercom_url": "http://support.orgzit.com/en/articles/4367374-how-to-set-the-workspace-access-level",
+    "new_path": "/articles/how-to-set-the-workspace-access-level"
+  },
+  {
+    "intercom_id": "4355742",
+    "intercom_url": "http://support.orgzit.com/en/articles/4355742-how-to-use-inline-filters",
+    "new_path": "/articles/how-to-use-inline-filters"
+  },
+  {
+    "intercom_id": "4389882",
+    "intercom_url": "http://support.orgzit.com/en/articles/4389882-action-configs-in-orgzit",
+    "new_path": "/articles/action-configs-in-orgzit"
+  },
+  {
+    "intercom_id": "4390045",
+    "intercom_url": "http://support.orgzit.com/en/articles/4390045-how-to-set-up-table-fields",
+    "new_path": "/articles/how-to-set-up-table-fields"
+  },
+  {
+    "intercom_id": "4397087",
+    "intercom_url": "http://support.orgzit.com/en/articles/4397087-how-to-set-up-the-table-details",
+    "new_path": "/articles/how-to-set-up-the-table-details"
+  },
+  {
+    "intercom_id": "4407099",
+    "intercom_url": "http://support.orgzit.com/en/articles/4407099-how-to-validate-clone-reset-or-delete-the-workspace",
+    "new_path": "/articles/how-to-validate-clone-reset-or-delete-the-workspace"
+  },
+  {
+    "intercom_id": "4392709",
+    "intercom_url": "http://support.orgzit.com/en/articles/4392709-how-to-validate-clone-reset-or-delete-table",
+    "new_path": "/articles/how-to-validate-clone-reset-or-delete-table"
+  },
+  {
+    "intercom_id": "4410914",
+    "intercom_url": "http://support.orgzit.com/en/articles/4410914-how-to-implement-field-conditions",
+    "new_path": "/articles/how-to-implement-field-conditions"
+  },
+  {
+    "intercom_id": "4420695",
+    "intercom_url": "http://support.orgzit.com/en/articles/4420695-how-to-change-your-company-domain-in-orgzit",
+    "new_path": "/articles/how-to-change-your-company-domain-in-orgzit"
+  },
+  {
+    "intercom_id": "4425143",
+    "intercom_url": "http://support.orgzit.com/en/articles/4425143-calendar-view",
+    "new_path": "/articles/calendar-view"
+  },
+  {
+    "intercom_id": "4448269",
+    "intercom_url": "http://support.orgzit.com/en/articles/4448269-data-partitioning-and-access-controls",
+    "new_path": "/articles/data-partitioning-and-access-controls"
+  },
+  {
+    "intercom_id": "4459344",
+    "intercom_url": "http://support.orgzit.com/en/articles/4459344-how-to-set-data-field-or-column-level-access-permissions",
+    "new_path": "/articles/how-to-set-data-field-or-column-level-access-permissions"
+  },
+  {
+    "intercom_id": "4459798",
+    "intercom_url": "http://support.orgzit.com/en/articles/4459798-how-to-set-up-stage-transition-rules",
+    "new_path": "/articles/how-to-set-up-stage-transition-rules"
+  },
+  {
+    "intercom_id": "4756781",
+    "intercom_url": "http://support.orgzit.com/en/articles/4756781-how-to-create-prefilled-webforms",
+    "new_path": "/articles/how-to-create-prefilled-webforms"
+  },
+  {
+    "intercom_id": "4930108",
+    "intercom_url": "http://support.orgzit.com/en/articles/4930108-how-to-set-up-automated-reminders",
+    "new_path": "/articles/how-to-set-up-automated-reminders"
+  },
+  {
+    "intercom_id": "4354724",
+    "intercom_url": "http://support.orgzit.com/en/articles/4354724-explore-views-in-orgzit",
+    "new_path": "/articles/explore-views-in-orgzit"
+  },
+  {
+    "intercom_id": "4350678",
+    "intercom_url": "http://support.orgzit.com/en/articles/4350678-how-do-saved-filters-work",
+    "new_path": "/articles/how-do-saved-filters-work"
+  },
+  {
+    "intercom_id": "4321690",
+    "intercom_url": "http://support.orgzit.com/en/articles/4321690-how-to-add-a-new-data-field",
+    "new_path": "/articles/how-to-add-a-new-data-field"
+  },
+  {
+    "intercom_id": "4307288",
+    "intercom_url": "http://support.orgzit.com/en/articles/4307288-how-to-integrate-with-google-calendar-using-zapier",
+    "new_path": "/articles/how-to-integrate-with-google-calendar-using-zapier"
+  },
+  {
+    "intercom_id": "4307036",
+    "intercom_url": "http://support.orgzit.com/en/articles/4307036-how-to-integrate-with-your-gmail-account",
+    "new_path": "/articles/how-to-integrate-with-your-gmail-account"
+  },
+  {
+    "intercom_id": "4306758",
+    "intercom_url": "http://support.orgzit.com/en/articles/4306758-how-to-customize-pdf-template",
+    "new_path": "/articles/how-to-customize-pdf-template"
+  },
+  {
+    "intercom_id": "4306698",
+    "intercom_url": "http://support.orgzit.com/en/articles/4306698-how-to-customize-email-templates-in-email-action-config",
+    "new_path": "/articles/how-to-customize-email-templates-in-email-action-config"
+  },
+  {
+    "intercom_id": "4306534",
+    "intercom_url": "http://support.orgzit.com/en/articles/4306534-how-to-trigger-emails-based-on-a-condition",
+    "new_path": "/articles/how-to-trigger-emails-based-on-a-condition"
+  },
+  {
+    "intercom_id": "4305835",
+    "intercom_url": "http://support.orgzit.com/en/articles/4305835-how-to-generate-pdfs-based-on-conditions",
+    "new_path": "/articles/how-to-generate-pdfs-based-on-conditions"
+  },
+  {
+    "intercom_id": "4294508",
+    "intercom_url": "http://support.orgzit.com/en/articles/4294508-how-to-set-up-a-custom-action",
+    "new_path": "/articles/how-to-set-up-a-custom-action"
+  },
+  {
+    "intercom_id": "4269944",
+    "intercom_url": "http://support.orgzit.com/en/articles/4269944-how-to-send-emails-manually-using-custom-action-buttons",
+    "new_path": "/articles/how-to-send-emails-manually-using-custom-action-buttons"
+  },
+  {
+    "intercom_id": "4258234",
+    "intercom_url": "http://support.orgzit.com/en/articles/4258234-how-do-automations-work",
+    "new_path": "/articles/how-do-automations-work"
+  },
+  {
+    "intercom_id": "4154801",
+    "intercom_url": "http://support.orgzit.com/en/articles/4154801-how-to-set-up-a-user-access-control-system",
+    "new_path": "/articles/how-to-set-up-a-user-access-control-system"
+  },
+  {
+    "intercom_id": "2703775",
+    "intercom_url": "http://support.orgzit.com/en/articles/2703775-how-to-manage-and-track-dispatches-of-your-orders",
+    "new_path": "/articles/how-to-manage-and-track-dispatches-of-your-orders"
+  },
+  {
+    "intercom_id": "2703756",
+    "intercom_url": "http://support.orgzit.com/en/articles/2703756-how-to-add-products-to-the-product-list",
+    "new_path": "/articles/how-to-add-products-to-the-product-list"
+  },
+  {
+    "intercom_id": "2703710",
+    "intercom_url": "http://support.orgzit.com/en/articles/2703710-overview-of-tables-in-invoicing-and-order-management-solution",
+    "new_path": "/articles/overview-of-tables-in-invoicing-and-order-management-solution"
+  },
+  {
+    "intercom_id": "2317733",
+    "intercom_url": "http://support.orgzit.com/en/articles/2317733-orgzit-overview",
+    "new_path": "/articles/orgzit-overview"
+  },
+  {
+    "intercom_id": "2307107",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307107-what-are-data-fields-and-field-attributes",
+    "new_path": "/articles/what-are-data-fields-and-field-attributes"
+  },
+  {
+    "intercom_id": "2307104",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307104-business-intelligence-capabilities-in-orgzit-using-dashboard-widgets",
+    "new_path": "/articles/business-intelligence-capabilities-in-orgzit-using-dashboard-widgets"
+  },
+  {
+    "intercom_id": "2307101",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307101-how-to-create-a-table",
+    "new_path": "/articles/how-to-create-a-table"
+  },
+  {
+    "intercom_id": "4240883",
+    "intercom_url": "http://support.orgzit.com/en/articles/4240883-how-to-customize-sms-template",
+    "new_path": "/articles/how-to-customize-sms-template"
+  },
+  {
+    "intercom_id": "4237793",
+    "intercom_url": "http://support.orgzit.com/en/articles/4237793-how-to-send-sms-manually-in-orgzit",
+    "new_path": "/articles/how-to-send-sms-manually-in-orgzit"
+  },
+  {
+    "intercom_id": "4480211",
+    "intercom_url": "http://support.orgzit.com/en/articles/4480211-how-to-add-a-new-user-to-a-workspace",
+    "new_path": "/articles/how-to-add-a-new-user-to-a-workspace"
+  },
+  {
+    "intercom_id": "4366506",
+    "intercom_url": "http://support.orgzit.com/en/articles/4366506-how-to-set-table-attributes",
+    "new_path": "/articles/how-to-set-table-attributes"
+  },
+  {
+    "intercom_id": "4350975",
+    "intercom_url": "http://support.orgzit.com/en/articles/4350975-how-to-manage-different-roles-in-a-workspace",
+    "new_path": "/articles/how-to-manage-different-roles-in-a-workspace"
+  },
+  {
+    "intercom_id": "4350854",
+    "intercom_url": "http://support.orgzit.com/en/articles/4350854-how-to-add-a-new-user-to-your-orgzit-account",
+    "new_path": "/articles/how-to-add-a-new-user-to-your-orgzit-account"
+  },
+  {
+    "intercom_id": "2307117",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307117-how-to-generate-reports",
+    "new_path": "/articles/how-to-generate-reports"
+  },
+  {
+    "intercom_id": "4341372",
+    "intercom_url": "http://support.orgzit.com/en/articles/4341372-explore-reports-in-orgzit",
+    "new_path": "/articles/explore-reports-in-orgzit"
+  },
+  {
+    "intercom_id": "4852043",
+    "intercom_url": "http://support.orgzit.com/en/articles/4852043-filter-conditions",
+    "new_path": "/articles/filter-conditions"
+  },
+  {
+    "intercom_id": "4930062",
+    "intercom_url": "http://support.orgzit.com/en/articles/4930062-orgzit-onboarding-handbook",
+    "new_path": "/articles/orgzit-onboarding-handbook"
+  },
+  {
+    "intercom_id": "5131561",
+    "intercom_url": "http://support.orgzit.com/en/articles/5131561-how-to-set-up-sms-action-config",
+    "new_path": "/articles/how-to-set-up-sms-action-config"
+  },
+  {
+    "intercom_id": "5187764",
+    "intercom_url": "http://support.orgzit.com/en/articles/5187764-how-to-transfer-data-from-a-disabled-user-to-a-new-user",
+    "new_path": "/articles/how-to-transfer-data-from-a-disabled-user-to-a-new-user"
+  },
+  {
+    "intercom_id": "4647923",
+    "intercom_url": "http://support.orgzit.com/en/articles/4647923-how-to-disable-and-enable-user-from-a-workspace",
+    "new_path": "/articles/how-to-disable-and-enable-user-from-a-workspace"
+  },
+  {
+    "intercom_id": "4669512",
+    "intercom_url": "http://support.orgzit.com/en/articles/4669512-how-to-create-and-manage-email-templates",
+    "new_path": "/articles/how-to-create-and-manage-email-templates"
+  },
+  {
+    "intercom_id": "4818604",
+    "intercom_url": "http://support.orgzit.com/en/articles/4818604-how-to-access-your-api-key",
+    "new_path": "/articles/how-to-access-your-api-key"
+  },
+  {
+    "intercom_id": "4448850",
+    "intercom_url": "http://support.orgzit.com/en/articles/4448850-how-to-download-your-orgzit-data-in-an-excel-sheet",
+    "new_path": "/articles/how-to-download-your-orgzit-data-in-an-excel-sheet"
+  },
+  {
+    "intercom_id": "4453015",
+    "intercom_url": "http://support.orgzit.com/en/articles/4453015-how-to-bulk-update-records-by-csv-upload",
+    "new_path": "/articles/how-to-bulk-update-records-by-csv-upload"
+  },
+  {
+    "intercom_id": "4453573",
+    "intercom_url": "http://support.orgzit.com/en/articles/4453573-guide-to-formulas",
+    "new_path": "/articles/guide-to-formulas"
+  },
+  {
+    "intercom_id": "4399365",
+    "intercom_url": "http://support.orgzit.com/en/articles/4399365-how-do-webforms-work",
+    "new_path": "/articles/how-do-webforms-work"
+  },
+  {
+    "intercom_id": "4412321",
+    "intercom_url": "http://support.orgzit.com/en/articles/4412321-how-to-set-up-slack-integration",
+    "new_path": "/articles/how-to-set-up-slack-integration"
+  },
+  {
+    "intercom_id": "4417906",
+    "intercom_url": "http://support.orgzit.com/en/articles/4417906-how-to-set-up-webhook-integrations",
+    "new_path": "/articles/how-to-set-up-webhook-integrations"
+  },
+  {
+    "intercom_id": "4363943",
+    "intercom_url": "http://support.orgzit.com/en/articles/4363943-how-to-create-custom-tabular-views",
+    "new_path": "/articles/how-to-create-custom-tabular-views"
+  },
+  {
+    "intercom_id": "4362972",
+    "intercom_url": "http://support.orgzit.com/en/articles/4362972-how-to-manage-field-sections",
+    "new_path": "/articles/how-to-manage-field-sections"
+  },
+  {
+    "intercom_id": "4314603",
+    "intercom_url": "http://support.orgzit.com/en/articles/4314603-how-to-filter-data-in-orgzit",
+    "new_path": "/articles/how-to-filter-data-in-orgzit"
+  },
+  {
+    "intercom_id": "4315317",
+    "intercom_url": "http://support.orgzit.com/en/articles/4315317-explore-records-how-to-create-edit-copy-delete-records",
+    "new_path": "/articles/explore-records-how-to-create-edit-copy-delete-records"
+  },
+  {
+    "intercom_id": "4338929",
+    "intercom_url": "http://support.orgzit.com/en/articles/4338929-orgzit-library-overview-how-to-download-ready-to-use-templates",
+    "new_path": "/articles/orgzit-library-overview-how-to-download-ready-to-use-templates"
+  },
+  {
+    "intercom_id": "4305868",
+    "intercom_url": "http://support.orgzit.com/en/articles/4305868-how-to-set-up-a-pre-save-edit-record-action-config",
+    "new_path": "/articles/how-to-set-up-a-pre-save-edit-record-action-config"
+  },
+  {
+    "intercom_id": "4306724",
+    "intercom_url": "http://support.orgzit.com/en/articles/4306724-how-to-automatically-generate-and-email-pdf-documents",
+    "new_path": "/articles/how-to-automatically-generate-and-email-pdf-documents"
+  },
+  {
+    "intercom_id": "4247938",
+    "intercom_url": "http://support.orgzit.com/en/articles/4247938-how-to-set-up-whatsapp-integration",
+    "new_path": "/articles/how-to-set-up-whatsapp-integration"
+  },
+  {
+    "intercom_id": "4304246",
+    "intercom_url": "http://support.orgzit.com/en/articles/4304246-how-to-bulk-create-new-records-by-csv-upload",
+    "new_path": "/articles/how-to-bulk-create-new-records-by-csv-upload"
+  },
+  {
+    "intercom_id": "4304959",
+    "intercom_url": "http://support.orgzit.com/en/articles/4304959-how-to-bulk-edit-records",
+    "new_path": "/articles/how-to-bulk-edit-records"
+  },
+  {
+    "intercom_id": "2703849",
+    "intercom_url": "http://support.orgzit.com/en/articles/2703849-how-to-add-a-payment-record",
+    "new_path": "/articles/how-to-add-a-payment-record"
+  },
+  {
+    "intercom_id": "2833722",
+    "intercom_url": "http://support.orgzit.com/en/articles/2833722-india-gst-invoicing-user-guide",
+    "new_path": "/articles/india-gst-invoicing-user-guide"
+  },
+  {
+    "intercom_id": "4227620",
+    "intercom_url": "http://support.orgzit.com/en/articles/4227620-how-to-create-a-new-table-using-csv-upload",
+    "new_path": "/articles/how-to-create-a-new-table-using-csv-upload"
+  },
+  {
+    "intercom_id": "4240756",
+    "intercom_url": "http://support.orgzit.com/en/articles/4240756-how-to-trigger-an-sms-based-on-a-condition",
+    "new_path": "/articles/how-to-trigger-an-sms-based-on-a-condition"
+  },
+  {
+    "intercom_id": "2367276",
+    "intercom_url": "http://support.orgzit.com/en/articles/2367276-manage-your-workspace",
+    "new_path": "/articles/manage-your-workspace"
+  },
+  {
+    "intercom_id": "2501812",
+    "intercom_url": "http://support.orgzit.com/en/articles/2501812-how-to-change-your-personal-information-and-password-in-orgzit",
+    "new_path": "/articles/how-to-change-your-personal-information-and-password-in-orgzit"
+  },
+  {
+    "intercom_id": "2703684",
+    "intercom_url": "http://support.orgzit.com/en/articles/2703684-order-management-done-the-orgzit-way",
+    "new_path": "/articles/order-management-done-the-orgzit-way"
+  },
+  {
+    "intercom_id": "2307108",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307108-how-to-rename-a-workspace",
+    "new_path": "/articles/how-to-rename-a-workspace"
+  },
+  {
+    "intercom_id": "2307109",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307109-how-to-create-a-new-workspace",
+    "new_path": "/articles/how-to-create-a-new-workspace"
+  },
+  {
+    "intercom_id": "2307110",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307110-data-relationships",
+    "new_path": "/articles/data-relationships"
+  },
+  {
+    "intercom_id": "2307112",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307112-what-field-attributes-can-be-used-for-each-data-type",
+    "new_path": "/articles/what-field-attributes-can-be-used-for-each-data-type"
+  },
+  {
+    "intercom_id": "2307113",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307113-how-to-manage-modify-or-delete-tables",
+    "new_path": "/articles/how-to-manage-modify-or-delete-tables"
+  },
+  {
+    "intercom_id": "2307116",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307116-adding-editing-and-deleting-records",
+    "new_path": "/articles/adding-editing-and-deleting-records"
+  },
+  {
+    "intercom_id": "2307118",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307118-how-to-expand-a-record-to-a-full-page-detail-view",
+    "new_path": "/articles/how-to-expand-a-record-to-a-full-page-detail-view"
+  },
+  {
+    "intercom_id": "2307096",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307096-how-to-remove-or-edit-access-for-collaborators-on-a-workspace",
+    "new_path": "/articles/how-to-remove-or-edit-access-for-collaborators-on-a-workspace"
+  },
+  {
+    "intercom_id": "2307097",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307097-types-of-workspaces-shared-or-personal",
+    "new_path": "/articles/types-of-workspaces-shared-or-personal"
+  },
+  {
+    "intercom_id": "2307098",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307098-collaboration-features-in-orgzit",
+    "new_path": "/articles/collaboration-features-in-orgzit"
+  },
+  {
+    "intercom_id": "2307105",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307105-tracking-tasks",
+    "new_path": "/articles/tracking-tasks"
+  },
+  {
+    "intercom_id": "2307106",
+    "intercom_url": "http://support.orgzit.com/en/articles/2307106-how-to-upload-and-download-your-app-data",
+    "new_path": "/articles/how-to-upload-and-download-your-app-data"
+  }
+]

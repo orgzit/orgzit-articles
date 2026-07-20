@@ -1,0 +1,195 @@
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  // flex-start keeps every row's first card at the same left edge — including
+  // a trailing partial row (e.g. a lone last card) — rather than centering
+  // each row independently. The inter-card gap stays 1.875rem either way.
+  justify-content: flex-start;
+  gap: 1.875rem 1.875rem;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.125rem;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+}
+
+.card__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-wrap: pretty;
+  .card:hover & { color: var(--color-primary); }
+}
+
+// Category card — 272:304 proportions, 16px radius. Hover is a whole-card
+// "selected" state (filled tint + colored border), not just a text-color change.
+.card--category {
+  align-items: center;
+  // flex-start (not center) anchors the icon at a fixed offset from the top
+  // on every card — with center, a 1-line title and a 3-line title shift the
+  // icon to a different height on each card, breaking row-to-row alignment.
+  justify-content: flex-start;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 2.75rem 2.25rem;
+  // flex-basis (not width) controls sizing in the flex-wrap layout — 1 per row on
+  // mobile, 2 from 40rem, 3 from 64rem, matching the .card-grid gap at each step.
+  // min-width: 0 overrides the flex item's default content-based minimum size —
+  // without it, a long title's min-content width (e.g. "Management") pushes the
+  // box wider than its flex-basis instead of wrapping, breaking row alignment.
+  // Each breakpoint's basis is the old fill-the-row width times 0.95 — 5%
+  // narrower than before, gap (1.875rem) untouched.
+  flex: 0 0 95%;
+  min-width: 0;
+  // Height cut a further 10% (337 -> ~303 at the old width), width unchanged.
+  aspect-ratio: 190.4 / 201.3;
+
+  @media (min-width: 40rem) { flex: 0 0 calc(0.95 * (100% - 1.875rem) / 2); }
+  @media (min-width: 64rem) { flex: 0 0 calc(0.95 * (100% - 2 * 1.875rem) / 3); }
+  border-radius: 1rem;
+  border-color: rgb(0 0 0 / 0.11);
+  box-shadow: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    background: #f0ebeb66;
+    border-color: #000000;
+    box-shadow: none;
+    transform: none;
+
+    .card__title {
+      color: #000000;
+    }
+  }
+
+  .card__title {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    // Fixed height (fits up to 3 lines at this size) so the icon below always
+    // starts at the same offset, whether the title is 1 line or 3. One font
+    // size for every card — no per-title exceptions.
+    min-height: 5rem;
+    font-size: 1.1875rem;
+    font-weight: 700;
+  }
+
+  .card__icon {
+    width: 5.5rem;
+    height: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// "Recommended articles" — centered heading, 6 items in 2 columns (3 left, 3 right)
+.recommended-heading {
+  text-align: center;
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 2rem;
+}
+
+.simple-list {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(6, auto);
+  row-gap: 0;
+  justify-content: safe center;
+  overflow-x: auto;
+  max-width: 54rem;
+  margin: 0 auto;
+  padding-bottom: 0.25rem;
+
+  @media (min-width: 40rem) {
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    column-gap: 2.75rem;
+  }
+}
+
+.simple-list__item {
+  display: block;
+  padding: 0.8125rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+}
+
+// Article list item (category + popular)
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.article-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-md);
+  }
+
+  &__icon { flex-shrink: 0; color: var(--color-primary); }
+
+  &__body { flex: 1; min-width: 0; }
+
+  &__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  &__summary {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-top: 0.1875rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__arrow { flex-shrink: 0; color: var(--color-border-strong); }
+}
+

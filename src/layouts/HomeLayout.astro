@@ -1,0 +1,19 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SearchBox from '../components/SearchBox.astro';
+---
+
+<BaseLayout title="Home">
+  <div class="hero-banner">
+    <div class="hero">
+      <h1 class="hero__title">Hey! How can we help?</h1>
+      <div class="hero__search">
+        <SearchBox placeholder="What are you looking for?" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <slot />
+  </div>
+</BaseLayout>

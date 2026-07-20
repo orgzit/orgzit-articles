@@ -1,0 +1,17 @@
+---
+import { getCategoryStyle } from '../lib/categoryIcon';
+import { categorySlug } from '../lib/categories';
+
+interface Props {
+  name: string;
+}
+const { name } = Astro.props;
+const style = getCategoryStyle(name);
+---
+
+<a href={`/category/${categorySlug(name)}`} class="card card--category">
+  <span class="card__title">{name}</span>
+  <div class="card__icon">
+    <img src={style.icon} width="56" height="56" alt="" />
+  </div>
+</a>

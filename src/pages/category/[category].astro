@@ -1,0 +1,61 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { categorySlug } from '../../lib/categories';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  const categories = new Map<string, CollectionEntry<'articles'>[]>();
+  for (const article of articles) {
+    const key = article.data.category;
+    if (!categories.has(key)) categories.set(key, []);
+    categories.get(key)!.push(article);
+  }
+  return [...categories.entries()].map(([name, items]) => ({
+    params: { category: categorySlug(name) },
+    props: { categoryName: name, items },
+  }));
+}
+
+const { categoryName, items } = Astro.props;
+---
+
+<CategoryLayout categoryName={categoryName} itemCount={items.length}>
+  <div class="category-articles__header">
+    <h2 class="section__title">All articles</h2>
+    <div class="category-filter">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" placeholder="Filter articles…" aria-label="Filter articles" id="category-filter-input" />
+    </div>
+  </div>
+  <div class="article-list" id="category-article-list">
+    {items.map((a) => (
+      <a href={`/articles/${a.data.slug}`} class="article-list-item">
+        <svg class="article-list-item__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6"></path>
+        </svg>
+        <div class="article-list-item__body">
+          <div class="article-list-item__title">{a.data.title}</div>
+          {a.data.summary && <div class="article-list-item__summary">{a.data.summary}</div>}
+        </div>
+        <svg class="article-list-item__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <polyline points="9,18 15,12 9,6"></polyline>
+        </svg>
+      </a>
+    ))}
+  </div>
+</CategoryLayout>
+
+<script>
+  const input = document.querySelector<HTMLInputElement>('#category-filter-input');
+  const items = document.querySelectorAll<HTMLElement>('#category-article-list .article-list-item');
+  input?.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+    items.forEach((item) => {
+      const title = item.querySelector('.article-list-item__title')?.textContent?.toLowerCase() ?? '';
+      item.style.display = title.includes(query) ? '' : 'none';
+    });
+  });
+</script>

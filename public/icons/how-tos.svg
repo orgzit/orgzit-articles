@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  
+  <line x1="152" y1="152" x2="208" y2="208" stroke="#1c2b3a" stroke-width="28" stroke-linecap="round"></line>
+  
+  <line x1="152" y1="152" x2="208" y2="208" stroke="#0969da" stroke-width="18" stroke-linecap="round"></line>
+  
+  <circle cx="96" cy="96" r="78" fill="#f2ede4" stroke="#1c2b3a" stroke-width="7"></circle>
+  
+  <circle cx="96" cy="96" r="58" fill="white" stroke="#1c2b3a" stroke-width="5"></circle>
+  
+  <line x1="96" y1="46" x2="96" y2="55" stroke="#1c2b3a" stroke-width="4" stroke-linecap="round"></line>
+  <line x1="96" y1="137" x2="96" y2="146" stroke="#1c2b3a" stroke-width="4" stroke-linecap="round"></line>
+  <line x1="46" y1="96" x2="55" y2="96" stroke="#1c2b3a" stroke-width="4" stroke-linecap="round"></line>
+  <line x1="137" y1="96" x2="146" y2="96" stroke="#1c2b3a" stroke-width="4" stroke-linecap="round"></line>
+  
+  <line x1="96" y1="96" x2="96" y2="66" stroke="#1c2b3a" stroke-width="6" stroke-linecap="round"></line>
+  
+  <line x1="96" y1="96" x2="122" y2="112" stroke="#0969da" stroke-width="6" stroke-linecap="round"></line>
+  
+  <circle cx="96" cy="96" r="5" fill="#1c2b3a"></circle>
+</svg>

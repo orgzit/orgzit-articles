@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  
+  <rect x="44" y="24" width="148" height="192" rx="10" fill="#f2ede4" stroke="#1c2b3a" stroke-width="6" transform="rotate(6 118 120)"></rect>
+  
+  <rect x="28" y="18" width="148" height="192" rx="10" fill="#f2ede4" stroke="#1c2b3a" stroke-width="7"></rect>
+  
+  <path d="M28 28 Q28 18 38 18 L166 18 Q176 18 176 28 L176 62 L28 62 Z" fill="#0969da"></path>
+  <rect x="28" y="18" width="148" height="44" rx="10" fill="none" stroke="#1c2b3a" stroke-width="7"></rect>
+  <line x1="28" y1="62" x2="176" y2="62" stroke="#1c2b3a" stroke-width="5"></line>
+  
+  <line x1="46" y1="82" x2="160" y2="82" stroke="#1c2b3a" stroke-width="5" stroke-linecap="round"></line>
+  <line x1="46" y1="100" x2="145" y2="100" stroke="#1c2b3a" stroke-width="5" stroke-linecap="round"></line>
+  <line x1="46" y1="118" x2="158" y2="118" stroke="#1c2b3a" stroke-width="5" stroke-linecap="round"></line>
+  <line x1="46" y1="136" x2="140" y2="136" stroke="#1c2b3a" stroke-width="5" stroke-linecap="round"></line>
+  <line x1="36" y1="152" x2="168" y2="152" stroke="#1c2b3a" stroke-width="4"></line>
+  <line x1="46" y1="168" x2="160" y2="168" stroke="#1c2b3a" stroke-width="7" stroke-linecap="round"></line>
+  
+  <circle cx="172" cy="162" r="28" fill="#0969da" stroke="#1c2b3a" stroke-width="6"></circle>
+  <path d="M160 162 L170 172 L188 150" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+</svg>
