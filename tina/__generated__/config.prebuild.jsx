@@ -23,9 +23,6 @@ var config_default = defineConfig({
         label: "Support Articles",
         path: "src/content/articles",
         format: "md",
-        ui: {
-          router: ({ document }) => `/articles/${document._sys.filename}`
-        },
         fields: [
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
           { type: "string", name: "slug", label: "Slug", required: true },
