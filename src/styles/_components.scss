@@ -118,10 +118,18 @@
   --pf-searchbox-max-width: none;
 }
 
-.search-box :global(pagefind-searchbox) {
+.search-box pagefind-searchbox {
   display: block;
   box-shadow: var(--shadow-lg);
   border-radius: var(--radius-md);
+}
+
+// Pagefind's own "⌘ K" keyboard-shortcut badge inside the input. Needs
+// !important — Pagefind's own CSS targets this with an equal-specificity
+// compound selector (.pf-searchbox-input-wrapper .pf-trigger-shortcut) that
+// loads after ours in the bundle, so plain source order isn't enough.
+.search-box .pf-trigger-shortcut {
+  display: none !important;
 }
 
 // Hero
