@@ -8,7 +8,7 @@ authorAvatar: "/images/authors/2356035.png"
 date: "2020-08-18"
 featured: false
 ---
-Orgzit provides four different types of views to present your data. You can quickly switch between them as per requirement. By default, app data appears in [Tabular View](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2639100/show). You can also view your data in [Kanban View](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2639261/show), [Map View](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2639277/show)**,** and [Calendar View](/articles/calendar-view).
+Orgzit provides four different types of views to present your data. You can quickly switch between them as per requirement. By default, app data appears in [Tabular View](/articles/tabular-view-in-orgzit). You can also view your data in [Kanban View](/articles/kanban-view-in-orgzit), [Map View](/articles/map-view-in-orgzit)**,** and [Calendar View](/articles/calendar-view).
 
 **Tabular View**
 

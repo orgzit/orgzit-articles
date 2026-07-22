@@ -20,14 +20,14 @@ The following are are the advantages of the Tabular View:
     
 *   **Inline edit:** Double-clicking on a specific record's field will convert only the selected field into an editable format.
     
-*   **[Bulk edit](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2631037/show):** You can edit multiple records at once by clicking the [bulk edit](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2631037/show) button in a tabular view.
+*   **Bulk edit:** You can edit multiple records at once by clicking the bulk edit button in a tabular view.
     
 *   **Change column width:** To increase or decrease column width in the tabular view, go to the top row of the table and drag the boundaries between columns horizontally. This is highly useful when you want to view bigger/smaller chunks of a field's data at once.
     
 *   **Pagination:** As you scroll down in the table, the next set of records will be automatically fetched (maximum 100 records at a time).
     
 
-You can also personalize your tabular view as per your needs. i.e out of 8 fields or columns you want to view only 3 fields which will help you maintain a laser focus on the task you want to accomplish, you can [hide](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2633376/show) the irrelevant fields and save that view as your personalized view. 
+You can also personalize your tabular view as per your needs. i.e out of 8 fields or columns you want to view only 3 fields which will help you maintain a laser focus on the task you want to accomplish, you can [hide](/articles/how-to-show-hide-fields) the irrelevant fields and save that view as your personalized view. 
 
 Check out [this doc to understand how to create custom tabular views in Orgzit!](/articles/how-to-create-custom-tabular-views)  
   

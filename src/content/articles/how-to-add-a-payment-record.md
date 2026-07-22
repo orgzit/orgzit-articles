@@ -10,12 +10,12 @@ featured: false
 ---
 Related Articles: 
 
-*   [Invoicing and Order Management Overview](http://support.orgzit.com/user-guides/order-management-done-the-orgzit-way)
+*   [Invoicing and Order Management Overview](/articles/order-management-done-the-orgzit-way)
     
 *   Invoicing and Order Management - User guide
     
 
-[![](/images/how-to-add-a-payment-record/img-1.png)](http://support.orgzit.com/user-guides/invoicing-and-order-management/invoicing-and-order-management-user-guide)
+[![](/images/how-to-add-a-payment-record/img-1.png)](/articles/invoicing-and-order-management-user-guide)
 
 In the Invoicing and Order Management Workspace, all the information relevant to managing your orders and serving your customers are systematically connected to ensure that your order management workflows are smooth and seamless. 
 

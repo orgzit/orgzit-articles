@@ -37,7 +37,7 @@ Here's a list of resources that will help you with your journey at Orgzit:
 9.  [Explore Reports](/articles/how-to-generate-reports)  
     ​
     
-10.  [Explore Dashboards](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2307104/show)  
+10.  [Explore Dashboards](/articles/business-intelligence-capabilities-in-orgzit-using-dashboard-widgets)  
      ​
      
 11.  [Want to set up some configuration? Learn all about the Manage Table Page](/articles/how-to-set-up-the-table-details)  

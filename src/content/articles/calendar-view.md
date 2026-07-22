@@ -8,7 +8,7 @@ authorAvatar: "/images/authors/2356035.png"
 date: "2020-09-09"
 featured: false
 ---
-Orgzit provides four different types of [views](/articles/explore-views-in-orgzit) to present your data. You can quickly switch between them as per requirement. By default, app data appears in [Tabular View](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2639100/show). You can also view your data in [Kanban View](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2639261/show), [Map View](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2639277/show)**,** and Calendar View. You can also create [custom views](/articles/how-to-create-custom-tabular-views) in Orgzit using the [Show/Hide Fields](/articles/how-to-show-hide-fields) feature.
+Orgzit provides four different types of [views](/articles/explore-views-in-orgzit) to present your data. You can quickly switch between them as per requirement. By default, app data appears in [Tabular View](/articles/tabular-view-in-orgzit). You can also view your data in [Kanban View](/articles/kanban-view-in-orgzit), [Map View](/articles/map-view-in-orgzit)**,** and Calendar View. You can also create [custom views](/articles/how-to-create-custom-tabular-views) in Orgzit using the [Show/Hide Fields](/articles/how-to-show-hide-fields) feature.
 
 ## **Calendar View**
 

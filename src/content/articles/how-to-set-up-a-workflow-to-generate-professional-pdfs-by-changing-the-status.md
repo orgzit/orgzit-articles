@@ -8,7 +8,7 @@ authorAvatar: "/images/authors/2356035.png"
 date: "2019-02-08"
 featured: false
 ---
-It is possible to [generate professional PDFs](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2639185/show) in Orgzit by following a simple procedure. However, the [procedure described](https://app.intercom.io/a/apps/ohbhcy2a/articles/articles/2639185/show) in attached article can be automated by following few steps. 
+It is possible to [generate professional PDFs](/articles/how-to-create-professional-pdfs-in-orgzit) in Orgzit by following a simple procedure. However, the [procedure described](/articles/how-to-create-professional-pdfs-in-orgzit) in attached article can be automated by following few steps. 
 
 Process described in the aforementioned article is a one-time exercise. After the set-up, the process can be AUTOMATED with the help of a workflow.  
 That is, at what point of your usage do you want the invoice to be generated automatically, for instance a status change. These workflows (refer to GIF below) also allow you to instruct our system to send the auto-generated invoice to the concerned person/client.
