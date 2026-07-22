@@ -137,7 +137,7 @@ For instance, the default value of a field Tax Rate can be set to 18%.
 ​
 
 **Field Condition -** Very often, a data field depends on another data field. This dependency can be of different types and is dealt with in the Orgzit workspace by the use of a field attribute called Field Condition.  
-[Check out this support article to know about Field Conditions.](http://Very%20often,%20a%20data%20field%20depends%20on%20another%20data%20field.%20This%20dependency%20can%20be%20of%20different%20types%20and%20is%20dealt%20with%20in%20the%20Orgzit%20workspace%20by%20the%20use%20of%20a%20field%20attribute%20called%20Field%20Condition.)
+[Check out this support article to know about Field Conditions.](/articles/how-to-implement-field-conditions)
 
   
 ​
