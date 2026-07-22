@@ -58,13 +58,7 @@ const formattedDate = new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', 
           <div class="article-body">
             <slot />
           </div>
-          <div class="article-feedback" data-pagefind-ignore>
-            <span>Was this article helpful?</span>
-            <div class="feedback-actions">
-              <button class="feedback-btn--yes" type="button">Yes, thanks!</button>
-              <button type="button">Not really</button>
-            </div>
-          </div>
+          <p class="article-closing" data-pagefind-ignore>Thanks for reading!</p>
         </article>
 
         <aside class="toc">
@@ -76,16 +70,3 @@ const formattedDate = new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', 
     </div>
   </div>
 </BaseLayout>
-
-<script>
-  document.querySelectorAll<HTMLElement>('.article-feedback').forEach((bar) => {
-    const label = bar.querySelector('span');
-    const buttons = bar.querySelectorAll<HTMLButtonElement>('button');
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        if (label) label.textContent = 'Thanks for the feedback!';
-        buttons.forEach((b) => (b.disabled = true));
-      });
-    });
-  });
-</script>

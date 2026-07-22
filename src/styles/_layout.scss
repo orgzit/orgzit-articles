@@ -281,39 +281,13 @@
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
-.article-feedback {
+.article-closing {
   margin-top: 2.5rem;
-  padding: 1.125rem 1.5rem;
-  background: var(--color-bg-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
   color: var(--color-text-muted);
   font-weight: 500;
-
-  .feedback-actions { display: flex; gap: 0.5rem; }
-
-  button {
-    padding: 0.4375rem 1rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    color: var(--color-text-muted);
-
-    &.feedback-btn--yes {
-      background: var(--color-primary-soft);
-      color: var(--color-primary);
-      border-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
-    }
-  }
 }
 
 // ── Section titles ────────────────────────────────────────────────────────────
