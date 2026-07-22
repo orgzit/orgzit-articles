@@ -1,16 +1,17 @@
 ---
-title: "Orgzit Overview"
-slug: "orgzit-overview"
-category: "Overview Guide"
-summary: "Power and versatility of a true relational database that is easy to use"
-author: "Pavan Verma (CTO - Orgzit)"
-authorAvatar: "/images/authors/2356035.png"
-date: "2019-02-08"
-featured: false
+title: Orgzit Overview
+slug: orgzit-overview
+category: Overview Guide
+summary: Power and versatility of a true relational database that is easy to use
+author: Pavan Verma (CTO - Orgzit)
+authorAvatar: /images/authors/2356035.png
+date: '2019-02-08'
+featured: true
 ---
+
 # Welcome!
 
-Orgzit is structured through Accounts, Workspaces, Tables, Records, and Data Fields.   
+Orgzit is structured through Accounts, Workspaces, Tables, Records, and Data Fields. \
 ​
 
 ![](/images/orgzit-overview/img-1.png)
@@ -21,8 +22,8 @@ The following are the basic components of Orgzit. 
 
 ## Accounts
 
-When you start to set up Orgzit for your organization, your first step will be to create an Account.  
-  
+When you start to set up Orgzit for your organization, your first step will be to create an Account.
+
 Let’s understand what Accounts are!
 
 In Orgzit, Accounts are representative of your organization. Like your organization, you can have different divisions and business workflows in your Orgzit Account. All the members of your organization can come together within the account and work on their respective workflows and processes which will be there in the form of different workspaces within your account.
@@ -31,14 +32,13 @@ So, for instance, you have a company called Acme Solutions, you can have an Orgz
 
 ## Workspaces
 
-A workspace is a single database containing all the information you need for neatly organizing your information. It’s the equivalent of a workbook in traditional spreadsheet programs. You can create Workspaces for your different organizational workflows and process, like, CRM, Task Management, Order Management, Lead Tracking, etc.  
+A workspace is a single database containing all the information you need for neatly organizing your information. It’s the equivalent of a workbook in traditional spreadsheet programs. You can create Workspaces for your different organizational workflows and process, like, CRM, Task Management, Order Management, Lead Tracking, etc.\
 ​
 
 ![](/images/orgzit-overview/img-2.jpeg)
 
-  
-A workspace can consist of one or multiple tables, having well-organized information. For eg, for an Order Management Workspace, List of Orders, Payment Tracking, Customer Information can be different tables.  
-  
+A workspace can consist of one or multiple tables, having well-organized information. For eg, for an Order Management Workspace, List of Orders, Payment Tracking, Customer Information can be different tables.
+
 [Orgzit also provides a list of ready-to-use templates in the Orgzit Library.](/articles/orgzit-library-overview-how-to-download-ready-to-use-templates) You can download and use these templates according to your use case.
 
 Let's see what are tables now.
@@ -49,8 +49,8 @@ Tables are specially crafted lists that keep all your data organized and lets yo
 
 ![](/images/orgzit-overview/img-3.jpeg)
 
-Orgzit tables allow you to store, organize, and analyze data in the form of lists. With tables, you can track every activity that constitutes your work. For example, you can store all details about your leads, customers in different tables and can also record orders and payments in other tables.  
-  
+Orgzit tables allow you to store, organize, and analyze data in the form of lists. With tables, you can track every activity that constitutes your work. For example, you can store all details about your leads, customers in different tables and can also record orders and payments in other tables.
+
 [Learn how to set up a table by reading this support article.](/articles/how-to-set-up-a-new-table)
 
 ## Records
@@ -63,12 +63,12 @@ Records contain the actual data that runs your business day after day. Records a
 
 ## Data Fields
 
-Data Fields are the database equivalent of a column in a spreadsheet. Every record can have multiple data fields, storing different types of data like text, numbers, images, documents, etc.  
-  
+Data Fields are the database equivalent of a column in a spreadsheet. Every record can have multiple data fields, storing different types of data like text, numbers, images, documents, etc.
+
 [Read this support article to learn how to add a data field.](/articles/how-to-add-a-new-data-field)
 
 ![](/images/orgzit-overview/img-5.jpeg)
 
-These were the basic building blocks of Orgzit. Each one of them supports a lot of interesting features that help increase the efficiency of any business workflow.  
-  
+These were the basic building blocks of Orgzit. Each one of them supports a lot of interesting features that help increase the efficiency of any business workflow.
+
 You can start by learning about the [collaboration features](/articles/collaboration-features-in-orgzit), [access levels](/articles/how-to-set-up-a-user-access-control-system), and [dashboard widgets](/articles/business-intelligence-capabilities-in-orgzit-using-dashboard-widgets) in Orgzit.
