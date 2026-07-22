@@ -40,9 +40,9 @@ Once you choose to create a new data field by the above-mentioned method, you ne
       
     **Image:** This data type can be used is you want to store an image in your field.  
       
-    **User:** This data type can be used if you want to assign a [user](/articles/how-to-add-a-new-user-to-your-orgzit-account) to a record. For eg., you can assign an order to a salesperson or assign a task to a team member using this field. It's one of the ways to [collaborate](https://app.intercom.com/a/apps/ohbhcy2a/articles/articles/4341649/show) with other users in the workspace.  
+    **User:** This data type can be used if you want to assign a [user](/articles/how-to-add-a-new-user-to-your-orgzit-account) to a record. For eg., you can assign an order to a salesperson or assign a task to a team member using this field. It's one of the ways to collaborate with other users in the workspace.  
       
-    **Location:** This data type can be used is you want to store a location in your field. Using this, you can also leverage the power of the [map view](https://app.intercom.com/a/apps/ohbhcy2a/articles/articles/2639277/show) of your data.  
+    **Location:** This data type can be used is you want to store a location in your field. Using this, you can also leverage the power of the [map view](/articles/map-view-in-orgzit) of your data.  
       
     **Relationship:** You can use this data type if you want to link one table to another through this field.  
     _For eg_. You have a Customer table with all your customer details and you have an Orders table with all order details. You can link the Order to a Customer by creating a Customer relationship field in your Orders table. By doing this, each order record will be linked to a customer from your customer table.  
