@@ -47,7 +47,11 @@ var config_default = defineConfig({
           { type: "string", name: "summary", label: "Summary", ui: { component: "textarea" } },
           { type: "string", name: "author", label: "Author" },
           { type: "image", name: "authorAvatar", label: "Author Avatar" },
-          { type: "datetime", name: "date", label: "Date" },
+          // Plain string, not 'datetime' — our content schema expects a quoted
+          // date-only string ("2020-08-29"). Tina's datetime type writes an
+          // unquoted ISO timestamp, which YAML parses as an object and breaks
+          // Astro's z.string() schema.
+          { type: "string", name: "date", label: "Date (YYYY-MM-DD)" },
           { type: "boolean", name: "featured", label: "Featured on homepage" },
           { type: "rich-text", name: "body", label: "Body", isBody: true }
         ]

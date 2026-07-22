@@ -171,7 +171,7 @@
     box-shadow: var(--shadow-md);
   }
 
-  &__icon { flex-shrink: 0; color: var(--color-primary); }
+  &__icon { flex-shrink: 0; }
 
   &__body { flex: 1; min-width: 0; }
 

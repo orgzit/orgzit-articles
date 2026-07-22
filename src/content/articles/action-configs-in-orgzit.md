@@ -5,7 +5,7 @@ category: Features
 summary: This article describes Orgzit Action Configs.
 author: Pavan Verma (CTO - Orgzit)
 authorAvatar: /images/authors/2356035.png
-date: 2020-08-29T00:00:00.000Z
+date: "2020-08-29"
 featured: true
 ---
 

@@ -116,14 +116,6 @@ input ImageFilter {
   in: [String]
 }
 
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
 input BooleanFilter {
   eq: Boolean
   exists: Boolean
@@ -142,7 +134,7 @@ input ArticleFilter {
   summary: StringFilter
   author: StringFilter
   authorAvatar: ImageFilter
-  date: DatetimeFilter
+  date: StringFilter
   featured: BooleanFilter
   body: RichTextFilter
 }

@@ -195,14 +195,6 @@ export type ImageFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type DatetimeFilter = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type BooleanFilter = {
   eq?: InputMaybe<Scalars['Boolean']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -221,7 +213,7 @@ export type ArticleFilter = {
   summary?: InputMaybe<StringFilter>;
   author?: InputMaybe<StringFilter>;
   authorAvatar?: InputMaybe<ImageFilter>;
-  date?: InputMaybe<DatetimeFilter>;
+  date?: InputMaybe<StringFilter>;
   featured?: InputMaybe<BooleanFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
