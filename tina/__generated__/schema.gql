@@ -109,6 +109,13 @@ input StringFilter {
   in: [String]
 }
 
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
 input BooleanFilter {
   eq: Boolean
   exists: Boolean
@@ -126,7 +133,7 @@ input ArticleFilter {
   category: StringFilter
   summary: StringFilter
   author: StringFilter
-  authorAvatar: StringFilter
+  authorAvatar: ImageFilter
   date: StringFilter
   featured: BooleanFilter
   body: RichTextFilter
