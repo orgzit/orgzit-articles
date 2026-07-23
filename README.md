@@ -159,9 +159,9 @@ step. Just push to the connected branch (or `netlify deploy`).
 
 1. Visit `https://<your-site>/admin`
 2. Your browser shows a native login prompt (the Edge Function gate) —
-   any username, password = `ADMIN_PASSWORD`
+   username must be exactly `admin`, password = `ADMIN_PASSWORD`
 3. Tina's own login screen appears next — same password again (username
-   field is ignored; this is one shared password, not per-user accounts)
+   field is ignored there; this is one shared password, not per-user accounts)
 
 ## Why Upstash Redis?
 
@@ -187,10 +187,56 @@ long-term.
 - **Support Articles** — the article collection. Includes a working search
   box (word-based matching, tolerant of small phrasing differences).
   "New Folder" is disabled here — articles are flat, addressed by their own
-  `slug` field, and Tina has no way to delete a folder once created.
+  `slug` field, and Tina has no way to delete a folder once created. Every
+  field the site's content schema requires (`title`, `slug`, `category`,
+  `summary`, `author`, `authorAvatar`, `date`) is also marked `required` in
+  Tina's schema, so the Save button is blocked until they're all filled in —
+  an incomplete article can't be written to disk, which would otherwise
+  crash the entire site build (both local dev and the next production
+  deploy), not just that one page.
 - **Media Manager** — upload/browse/insert images into articles, stored in
   this repo's `public/images/`.
 - **Media Usage** (in the sidebar, below Media Manager) — a custom
   dashboard showing every image, whether it's used in an article and
   which one, with search by folder name and a "Delete folder" option
   (with a confirmation panel listing exactly what would break).
+
+## Security
+
+- **Path containment.** Every media route resolves its final path and
+  verifies it stays inside `public/images/` before touching disk or
+  GitHub — closes off using `directory`/`filename` traversal (e.g.
+  `../../netlify/functions`) to read, overwrite, or delete files anywhere
+  else in the repo.
+- **Upload validation.** Uploads are checked server-side against an
+  extension allowlist (`.jpg/.jpeg/.png/.gif/.webp`) *and* their actual
+  file bytes (extensions alone are spoofable), plus a 1MB size cap — not
+  just the client-side checks in `tina/media-store.ts`, which are
+  bypassable by calling the API directly.
+- **Brute-force throttling** on the shared password at both layers: the
+  Netlify Function tracks failed attempts per IP in memory, and the
+  `/admin` Edge Function uses Netlify's own native, edge-network-distributed
+  rate limiting (see the `rateLimit` config in `admin-gate.ts`).
+- **No open CORS** — the admin UI and API always share one origin, so
+  there's no legitimate cross-origin caller; removed rather than left wide
+  open for nothing.
+- **Constant-time password comparison** (`crypto.timingSafeEqual`) on the
+  API-level auth check, to avoid a timing side-channel.
+- **Security headers** site-wide (`X-Frame-Options`, `X-Content-Type-Options`,
+  `Referrer-Policy`, `Permissions-Policy`, `Strict-Transport-Security`) in
+  `netlify.toml`, plus a **Content-Security-Policy scoped to `/admin` only**,
+  built from actually inspecting the compiled Tina bundle rather than
+  guessed. Rolled out safely: deployed first as
+  `Content-Security-Policy-Report-Only` (logs violations without blocking
+  anything), verified clean through a real admin session (login, edit/save
+  an article, upload/delete media, Media Usage, search), then switched to
+  the real, enforcing header. The CSP itself lives in
+  `netlify/edge-functions/admin-gate.ts` rather than a static header rule —
+  it's applied conditionally, skipped whenever the request hostname is
+  `localhost`/`127.0.0.1`, since `npm run dev` serves a completely different
+  Vite dev-mode HTML shell (inline React Refresh scripts, a script loaded
+  from its own dev server) that this policy was never meant to cover.
+  Currently live and enforced on every real (non-local) deploy.
+- Secrets (`GITHUB_PERSONAL_ACCESS_TOKEN`, Upstash credentials,
+  `ADMIN_PASSWORD`) are only ever read server-side — confirmed none of them
+  reach the compiled browser bundle in `public/admin/`.

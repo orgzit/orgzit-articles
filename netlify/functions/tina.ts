@@ -1,9 +1,9 @@
 import path from 'node:path';
 import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
 import express, { type Request, type Response, type NextFunction } from 'express';
 import cookieParser from 'cookie-parser';
 import ServerlessHttp from 'serverless-http';
-import cors from 'cors';
 import dotenv from 'dotenv';
 import { Octokit } from '@octokit/rest';
 import { TinaNodeBackend, type BackendAuthProvider } from '@tinacms/datalayer';
@@ -15,8 +15,56 @@ const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === 'true';
 // public/images/ is two levels above netlify/functions/ in the project root.
 const LOCAL_IMAGES_ROOT = path.join(process.cwd(), 'public', 'images');
 
+// Best-effort brute-force throttle on the shared admin password, keyed by
+// client IP. Tracked in memory per warm function instance — not perfectly
+// distributed across concurrent invocations, and resets on a cold start,
+// but meaningfully slows a sustained guessing attempt without pulling in
+// external rate-limiting infrastructure just for this. Only failed
+// attempts count, so a legitimate user who mistypes a few times never
+// gets locked out of their own correct password.
+const MAX_FAILED_ATTEMPTS = 10;
+const FAILED_ATTEMPT_WINDOW_MS = 5 * 60 * 1000;
+const failedAttempts = new Map<string, { count: number; windowStart: number }>();
+
+function getClientIp(req: Request): string {
+  const forwarded = req.headers['x-forwarded-for'];
+  if (typeof forwarded === 'string' && forwarded.length > 0) return forwarded.split(',')[0].trim();
+  return req.ip ?? 'unknown';
+}
+
+function isRateLimited(ip: string): boolean {
+  const entry = failedAttempts.get(ip);
+  if (!entry) return false;
+  if (Date.now() - entry.windowStart > FAILED_ATTEMPT_WINDOW_MS) {
+    failedAttempts.delete(ip);
+    return false;
+  }
+  return entry.count >= MAX_FAILED_ATTEMPTS;
+}
+
+function recordFailedAttempt(ip: string): void {
+  const entry = failedAttempts.get(ip);
+  if (!entry || Date.now() - entry.windowStart > FAILED_ATTEMPT_WINDOW_MS) {
+    failedAttempts.set(ip, { count: 1, windowStart: Date.now() });
+  } else {
+    entry.count += 1;
+  }
+}
+
 function isAuthorizedRequest(req: Request): boolean {
-  return req.headers['authorization'] === `Bearer ${process.env.ADMIN_PASSWORD}`;
+  const ip = getClientIp(req);
+  if (isRateLimited(ip)) return false;
+
+  // Constant-time comparison — a plain === leaks how many leading
+  // characters matched via response-time differences. The length check
+  // first is the standard, accepted exception: it leaks far less (just
+  // whether lengths match) than a byte-by-byte comparison would.
+  const provided = Buffer.from(String(req.headers['authorization'] ?? ''));
+  const expected = Buffer.from(`Bearer ${process.env.ADMIN_PASSWORD ?? ''}`);
+  const ok = provided.length === expected.length && crypto.timingSafeEqual(provided, expected);
+
+  if (!ok) recordFailedAttempt(ip);
+  return ok;
 }
 
 // Independent of the /admin page gate (netlify/edge-functions/admin-gate.ts) —
@@ -43,11 +91,33 @@ function repoInfo() {
   };
 }
 
+// Guards every media path against traversal outside public/images/ — an
+// unsanitized directory/filename (e.g. "../../netlify/functions") would
+// otherwise let anyone holding the shared admin password read, overwrite,
+// or delete files anywhere on disk (locally) or anywhere in the GitHub
+// repo (production) — including this backend's own source code. Every
+// route below resolves its final path through one of these before
+// touching the filesystem or GitHub, rather than trusting the request.
+function safeLocalPath(...segments: string[]): string {
+  const resolved = path.resolve(LOCAL_IMAGES_ROOT, ...segments);
+  if (resolved !== LOCAL_IMAGES_ROOT && !resolved.startsWith(LOCAL_IMAGES_ROOT + path.sep)) {
+    throw new Error('Invalid path: escapes public/images/');
+  }
+  return resolved;
+}
+
 // Every media path is relative to public/images/ — matching the existing
-// convention every migrated article's images already use.
-function repoPath(directory: string, filename: string) {
-  const dir = directory.replace(/^\/+|\/+$/g, '');
-  return path.posix.join('public/images', dir, filename);
+// convention every migrated article's images already use. path.posix.join
+// collapses ".." segments; if the collapsed result no longer starts with
+// public/images/, the request was trying to escape it.
+function safeRepoPath(directory: string, filename = ''): string {
+  const joined = filename
+    ? path.posix.join('public/images', directory, filename)
+    : path.posix.join('public/images', directory);
+  if (joined !== 'public/images' && !joined.startsWith('public/images/')) {
+    throw new Error('Invalid path: escapes public/images/');
+  }
+  return joined;
 }
 
 // The media manager's grid/list rendering reads item.thumbnails["75x75"] and
@@ -68,6 +138,48 @@ function buildThumbnails(src: string): Record<string, string> {
   return thumbnails;
 }
 
+// Server-side upload validation — the media store's `accept`/`maxSize` are
+// enforced client-side only and don't stop anyone calling this endpoint
+// directly. SVG is deliberately excluded even though it's a common image
+// format: it's XML and can carry an embedded <script>, a well-known upload-
+// based XSS vector — and nothing in this project currently uses it.
+const ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+// Matches the ~1MB base64 cap the GitHub Contents API itself enforces —
+// see media-store.ts's client-side maxSize, kept in sync with this.
+const MAX_UPLOAD_BYTES = 1024 * 1024;
+
+// Extensions are trivially spoofable (naming a script "photo.jpg" defeats
+// an extension-only check) — this confirms the actual bytes match a real
+// image format before anything gets written to disk or committed to GitHub.
+function matchesImageSignature(ext: string, buf: Buffer): boolean {
+  switch (ext) {
+    case '.jpg':
+    case '.jpeg':
+      return buf.length > 2 && buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff;
+    case '.png':
+      return buf.length > 3 && buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47;
+    case '.gif':
+      return buf.length > 2 && buf[0] === 0x47 && buf[1] === 0x49 && buf[2] === 0x46;
+    case '.webp':
+      return (
+        buf.length > 11 &&
+        buf.toString('ascii', 0, 4) === 'RIFF' &&
+        buf.toString('ascii', 8, 12) === 'WEBP'
+      );
+    default:
+      return false;
+  }
+}
+
+function validateImageUpload(filename: string, buf: Buffer): string | null {
+  if (buf.length === 0) return 'File is empty';
+  if (buf.length > MAX_UPLOAD_BYTES) return 'File exceeds the 1MB upload limit';
+  const ext = path.extname(filename).toLowerCase();
+  if (!ALLOWED_IMAGE_EXTENSIONS.includes(ext)) return `File type ${ext || '(none)'} is not allowed`;
+  if (!matchesImageSignature(ext, buf)) return 'File content does not match its extension';
+  return null;
+}
+
 const mediaRouter = express.Router();
 
 mediaRouter.use((req: Request, res: Response, next: NextFunction) => {
@@ -85,7 +197,7 @@ mediaRouter.get('/list', async (req: Request, res: Response) => {
   const directory = String(req.query.directory || '');
   try {
     if (isLocal) {
-      const dirPath = path.join(LOCAL_IMAGES_ROOT, directory);
+      const dirPath = safeLocalPath(directory);
       let entries: string[] = [];
       try {
         entries = await fs.readdir(dirPath);
@@ -115,7 +227,7 @@ mediaRouter.get('/list', async (req: Request, res: Response) => {
 
     const octokit = getOctokit();
     const { owner, repo, branch } = repoInfo();
-    const dirPath = path.posix.join('public/images', directory.replace(/^\/+|\/+$/g, ''));
+    const dirPath = safeRepoPath(directory);
     const { data } = await octokit.rest.repos.getContent({ owner, repo, path: dirPath, ref: branch });
     const list = Array.isArray(data) ? data : [data];
     const items = list.map((entry) => {
@@ -150,11 +262,18 @@ mediaRouter.post('/upload', async (req: Request, res: Response) => {
     return;
   }
 
+  const decoded = Buffer.from(contentBase64, 'base64');
+  const validationError = validateImageUpload(filename, decoded);
+  if (validationError) {
+    res.status(400).json({ error: validationError });
+    return;
+  }
+
   try {
     if (isLocal) {
-      const dirPath = path.join(LOCAL_IMAGES_ROOT, directory);
-      await fs.mkdir(dirPath, { recursive: true });
-      await fs.writeFile(path.join(dirPath, filename), Buffer.from(contentBase64, 'base64'));
+      const filePath = safeLocalPath(directory, filename);
+      await fs.mkdir(path.dirname(filePath), { recursive: true });
+      await fs.writeFile(filePath, decoded);
       const src = path.posix.join('/images', directory, filename);
       res.json({
         type: 'file',
@@ -169,7 +288,7 @@ mediaRouter.post('/upload', async (req: Request, res: Response) => {
 
     const octokit = getOctokit();
     const { owner, repo, branch } = repoInfo();
-    const filePath = repoPath(directory, filename);
+    const filePath = safeRepoPath(directory, filename);
 
     // createOrUpdateFileContents needs the existing file's sha to update it —
     // omit it entirely when creating a new file.
@@ -221,10 +340,8 @@ mediaRouter.delete('/delete', async (req: Request, res: Response) => {
     // GitHub doesn't track empty directories, so once all files under a
     // path are gone the folder itself disappears with nothing left to delete.
     if (type === 'dir') {
-      const folderRelPath = path.posix.join(directory, filename);
-
       if (isLocal) {
-        await fs.rm(path.join(LOCAL_IMAGES_ROOT, folderRelPath), { recursive: true, force: true });
+        await fs.rm(safeLocalPath(directory, filename), { recursive: true, force: true });
         res.json({ ok: true });
         return;
       }
@@ -251,20 +368,20 @@ mediaRouter.delete('/delete', async (req: Request, res: Response) => {
         }
       }
 
-      await deleteRecursive(path.posix.join('public/images', folderRelPath));
+      await deleteRecursive(safeRepoPath(directory, filename));
       res.json({ ok: true });
       return;
     }
 
     if (isLocal) {
-      await fs.unlink(path.join(LOCAL_IMAGES_ROOT, directory, filename));
+      await fs.unlink(safeLocalPath(directory, filename));
       res.json({ ok: true });
       return;
     }
 
     const octokit = getOctokit();
     const { owner, repo, branch } = repoInfo();
-    const filePath = repoPath(directory, filename);
+    const filePath = safeRepoPath(directory, filename);
     const existing = await octokit.rest.repos.getContent({ owner, repo, path: filePath, ref: branch });
     if (Array.isArray(existing.data)) throw new Error('Path is a directory, not a file');
 
@@ -488,7 +605,12 @@ searchRouter.get('/', async (req: Request, res: Response) => {
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+// No CORS middleware — the admin UI and this API are always served from
+// the same origin (relative /api/tina/* fetches), so there's no legitimate
+// cross-origin caller. Without CORS headers, browsers already enforce
+// same-origin by default; adding cors() here would only have widened that
+// to allow any origin to read responses if a request were ever replayed
+// cross-site.
 app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
 

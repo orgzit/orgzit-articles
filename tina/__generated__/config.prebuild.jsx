@@ -395,14 +395,22 @@ var config_default = defineConfig({
               "Tips & Tricks"
             ]
           },
-          { type: "string", name: "summary", label: "Summary", ui: { component: "textarea" } },
-          { type: "string", name: "author", label: "Author" },
-          { type: "image", name: "authorAvatar", label: "Author Avatar" },
+          // required: true on every field below (matching title/slug/category
+          // above) — src/content.config.ts's zod schema treats all of these
+          // as mandatory, non-optional. Without a matching `required` here,
+          // Tina lets you save an article missing one of them, which Astro
+          // then rejects with a hard crash that takes down the entire site
+          // build, not just that one article. Setting this blocks the Save
+          // button itself until the field has a value, so an incomplete
+          // article can never be written to disk in the first place.
+          { type: "string", name: "summary", label: "Summary", required: true, ui: { component: "textarea" } },
+          { type: "string", name: "author", label: "Author", required: true },
+          { type: "image", name: "authorAvatar", label: "Author Avatar", required: true },
           // Plain string, not 'datetime' — our content schema expects a quoted
           // date-only string ("2020-08-29"). Tina's datetime type writes an
           // unquoted ISO timestamp, which YAML parses as an object and breaks
           // Astro's z.string() schema.
-          { type: "string", name: "date", label: "Date (YYYY-MM-DD)" },
+          { type: "string", name: "date", label: "Date (YYYY-MM-DD)", required: true },
           { type: "boolean", name: "featured", label: "Featured on homepage" },
           { type: "rich-text", name: "body", label: "Body", isBody: true }
         ]

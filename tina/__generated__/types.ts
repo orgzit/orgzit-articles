@@ -170,10 +170,10 @@ export type Article = Node & Document & {
   title: Scalars['String']['output'];
   slug: Scalars['String']['output'];
   category: Scalars['String']['output'];
-  summary?: Maybe<Scalars['String']['output']>;
-  author?: Maybe<Scalars['String']['output']>;
-  authorAvatar?: Maybe<Scalars['String']['output']>;
-  date?: Maybe<Scalars['String']['output']>;
+  summary: Scalars['String']['output'];
+  author: Scalars['String']['output'];
+  authorAvatar: Scalars['String']['output'];
+  date: Scalars['String']['output'];
   featured?: Maybe<Scalars['Boolean']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
@@ -308,14 +308,14 @@ export type ArticleMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type ArticlePartsFragment = { __typename: 'Article', title: string, slug: string, category: string, summary?: string | null, author?: string | null, authorAvatar?: string | null, date?: string | null, featured?: boolean | null, body?: any | null };
+export type ArticlePartsFragment = { __typename: 'Article', title: string, slug: string, category: string, summary: string, author: string, authorAvatar: string, date: string, featured?: boolean | null, body?: any | null };
 
 export type ArticleQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type ArticleQuery = { __typename?: 'Query', article: { __typename: 'Article', id: string, title: string, slug: string, category: string, summary?: string | null, author?: string | null, authorAvatar?: string | null, date?: string | null, featured?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type ArticleQuery = { __typename?: 'Query', article: { __typename: 'Article', id: string, title: string, slug: string, category: string, summary: string, author: string, authorAvatar: string, date: string, featured?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type ArticleConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -327,7 +327,7 @@ export type ArticleConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ArticleConnectionQuery = { __typename?: 'Query', articleConnection: { __typename?: 'ArticleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ArticleConnectionEdges', cursor: string, node?: { __typename: 'Article', id: string, title: string, slug: string, category: string, summary?: string | null, author?: string | null, authorAvatar?: string | null, date?: string | null, featured?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type ArticleConnectionQuery = { __typename?: 'Query', articleConnection: { __typename?: 'ArticleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ArticleConnectionEdges', cursor: string, node?: { __typename: 'Article', id: string, title: string, slug: string, category: string, summary: string, author: string, authorAvatar: string, date: string, featured?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const ArticlePartsFragmentDoc = gql`
     fragment ArticleParts on Article {

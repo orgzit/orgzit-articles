@@ -26,3 +26,21 @@
 [[edge_functions]]
   path = "/admin/*"
   function = "admin-gate"
+
+# Baseline security headers, applied to every response. These five have no
+# risk of breaking anything and are safe to apply site-wide.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# The /admin Content-Security-Policy lives in netlify/edge-functions/admin-gate.ts
+# instead of a static [[headers]] block here — it needs to be skipped during
+# local dev (npm run dev serves a completely different Vite dev-mode HTML
+# shell that this policy was never meant to cover) and a static header rule
+# has no way to make that distinction, but the edge function can check the
+# request's hostname and apply it conditionally.

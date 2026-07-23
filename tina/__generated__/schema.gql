@@ -91,10 +91,10 @@ type Article implements Node & Document {
   title: String!
   slug: String!
   category: String!
-  summary: String
-  author: String
-  authorAvatar: String
-  date: String
+  summary: String!
+  author: String!
+  authorAvatar: String!
+  date: String!
   featured: Boolean
   body: JSON
   id: ID!
