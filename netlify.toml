@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[dev]
+  command = "astro dev"
+  targetPort = 4321
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Netlify Functions don't support catch-all paths natively — this forces
+# every /api/tina/* request through the single bundled function.
+[[redirects]]
+  from = "/api/tina/*"
+  to = "/.netlify/functions/tina"
+  status = 200
+  force = true
+
+# Gates the /admin editor UI independently of Astro's own (static) rendering —
+# tinacms build's output is served as plain static files, which never touch
+# Astro/SSR middleware regardless of prerender settings, so the gate has to
+# live at this layer instead.
+[[edge_functions]]
+  path = "/admin/*"
+  function = "admin-gate"

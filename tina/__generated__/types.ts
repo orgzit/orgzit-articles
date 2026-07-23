@@ -188,13 +188,6 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type ImageFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type BooleanFilter = {
   eq?: InputMaybe<Scalars['Boolean']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -212,7 +205,7 @@ export type ArticleFilter = {
   category?: InputMaybe<StringFilter>;
   summary?: InputMaybe<StringFilter>;
   author?: InputMaybe<StringFilter>;
-  authorAvatar?: InputMaybe<ImageFilter>;
+  authorAvatar?: InputMaybe<StringFilter>;
   date?: InputMaybe<StringFilter>;
   featured?: InputMaybe<BooleanFilter>;
   body?: InputMaybe<RichTextFilter>;
@@ -456,7 +449,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "http://localhost:4001/graphql",
+        url: "/api/tina/gql",
         queries,
       })
     )

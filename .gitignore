@@ -30,3 +30,6 @@ pnpm-debug.log*
 AGENTS.md
 CLAUDE.md
 README.md
+
+# Local Netlify folder
+.netlify

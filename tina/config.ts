@@ -1,23 +1,78 @@
 import { defineConfig } from 'tinacms';
+import type { AuthProvider } from '@tinacms/schema-tools';
 
-// TinaCloud project settings (app.tina.io) — never hardcode the token.
-const CLIENT_ID = process.env.TINA_CLIENT_ID || '';
-const TOKEN = process.env.TINA_TOKEN || '';
+// Self-hosted — no TinaCloud clientId/token. The admin UI talks to our own
+// GraphQL endpoint (netlify/functions/tina.ts via the redirect in
+// netlify.toml), authenticated with a single shared password rather than
+// TinaCloud/AuthJS accounts. Storing the password client-side in
+// localStorage is fine here — it's the shared editor password, not a
+// per-user secret, and it never leaves the browser except in the
+// Authorization header sent to our own backend.
+const STORAGE_KEY = 'orgzit-admin-token';
+
+function getStoredPassword(): string | null {
+  if (typeof window === 'undefined') return null;
+  return window.localStorage.getItem(STORAGE_KEY);
+}
+
+const sharedPasswordAuthProvider: AuthProvider = {
+  async getToken() {
+    const password = getStoredPassword();
+    return password ? { id_token: password } : null;
+  },
+  async logout() {
+    window.localStorage.removeItem(STORAGE_KEY);
+  },
+  async getUser() {
+    return getStoredPassword() ? { name: 'Admin' } : null;
+  },
+  async authorize() {
+    return getStoredPassword() ? { name: 'Admin' } : null;
+  },
+  async isAuthorized() {
+    return !!getStoredPassword();
+  },
+  async isAuthenticated() {
+    return !!getStoredPassword();
+  },
+  // Matches Tina's built-in UsernamePassword login form, which submits
+  // { username, password } — username is unused since this is one shared
+  // password, not per-user accounts.
+  async authenticate(props) {
+    const password = props?.password ?? '';
+    window.localStorage.setItem(STORAGE_KEY, password);
+    return { name: 'Admin' };
+  },
+  async fetchWithToken(input, init) {
+    const password = getStoredPassword();
+    return fetch(input, {
+      ...init,
+      headers: { ...(init?.headers || {}), Authorization: `Bearer ${password}` },
+    });
+  },
+  getLoginStrategy() {
+    return 'UsernamePassword';
+  },
+  getLoginScreen() {
+    return null;
+  },
+  getSessionProvider() {
+    return ({ children }: { children?: unknown }) => children;
+  },
+};
 
 export default defineConfig({
-  clientId: CLIENT_ID,
-  token: TOKEN,
-  branch: 'main',
+  contentApiUrlOverride: '/api/tina/gql',
+  authProvider: sharedPasswordAuthProvider,
+  branch: process.env.GITHUB_BRANCH || 'main',
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
   },
-  media: {
-    tina: {
-      mediaRoot: 'images',
-      publicFolder: 'public',
-    },
-  },
+  // No media.tina block — that's TinaCloud's media manager, which isn't
+  // available self-hosted. Author avatars already exist for every article;
+  // the Author Avatar field below just takes a plain path/URL instead of a
+  // drag-and-drop upload UI.
   schema: {
     collections: [
       {
@@ -48,7 +103,11 @@ export default defineConfig({
           },
           { type: 'string', name: 'summary', label: 'Summary', ui: { component: 'textarea' } },
           { type: 'string', name: 'author', label: 'Author' },
-          { type: 'image', name: 'authorAvatar', label: 'Author Avatar' },
+          // 'string', not 'image' — the 'image' type opens TinaCloud's media
+          // picker, which isn't available self-hosted (no media.tina config
+          // above). This is just a plain path/URL to an existing file, e.g.
+          // /images/authors/2356035.png.
+          { type: 'string', name: 'authorAvatar', label: 'Author Avatar (path or URL)' },
           // Plain string, not 'datetime' — our content schema expects a quoted
           // date-only string ("2020-08-29"). Tina's datetime type writes an
           // unquoted ISO timestamp, which YAML parses as an object and breaks
